@@ -1,0 +1,59 @@
+{
+  "demo_pitch_decks": [
+    {
+      "id": "demo-1",
+      "title": "Smart Inventory Management",
+      "problem": "Restaurants waste 30% of food due to poor inventory management, leading to $162 billion in annual losses globally.",
+      "solution": "AI-powered inventory tracking system that predicts demand and optimizes ordering to reduce waste by 60%.",
+      "slides": [
+        {
+          "title": "The Problem",
+          "content": "Restaurants waste 30% of food due to poor inventory management\n\n• $162 billion in annual losses globally\n• 40% of restaurants close within first year due to waste\n• Manual tracking leads to over-ordering and spoilage\n• No predictive analytics for demand forecasting"
+        },
+        {
+          "title": "Our Solution",
+          "content": "AI-powered inventory management platform that predicts demand and optimizes ordering\n\n• Machine learning algorithms predict daily demand\n• Real-time inventory tracking with IoT sensors\n• Automated reordering with optimal quantities\n• 60% reduction in food waste"
+        },
+        {
+          "title": "Market Opportunity",
+          "content": "Massive market opportunity in restaurant technology\n\n• $3.2B global restaurant management software market\n• 1.1M restaurants in the US alone\n• 15% annual growth rate\n• Only 20% of restaurants use modern inventory systems"
+        },
+        {
+          "title": "Traction",
+          "content": "Strong early traction with proven results\n\n• 50+ restaurant customers\n• $2.4M ARR growing 40% MoM\n• 60% average waste reduction\n• 95% customer retention rate"
+        }
+      ]
+    },
+    {
+      "id": "demo-2", 
+      "title": "AI-Powered Customer Support",
+      "problem": "Companies spend $1.3 trillion annually on customer support, with 70% of queries being repetitive and easily automatable.",
+      "solution": "Intelligent chatbot platform that handles 80% of customer inquiries automatically, reducing support costs by 60%.",
+      "slides": [
+        {
+          "title": "The Problem",
+          "content": "Customer support is expensive and inefficient\n\n• $1.3 trillion spent annually on customer support\n• 70% of queries are repetitive and automatable\n• Average response time: 24 hours\n• High employee turnover in support roles"
+        },
+        {
+          "title": "Our Solution",
+          "content": "AI-powered chatbot platform that handles customer inquiries automatically\n\n• Natural language processing for human-like conversations\n• Integrates with existing CRM systems\n• Handles 80% of inquiries without human intervention\n• 60% reduction in support costs"
+        },
+        {
+          "title": "Business Model",
+          "content": "SaaS subscription model with clear value proposition\n\n• $99/month per agent seat\n• Enterprise plans starting at $10K/month\n• 90% gross margin\n• 12-month payback period for customers"
+        },
+        {
+          "title": "Financial Projections",
+          "content": "Strong unit economics and growth trajectory\n\n• $500K ARR (current)\n• $5M ARR (12 months)\n• $50M ARR (36 months)\n• 85% gross margin"
+        }
+      ]
+    }
+  ],
+  "sample_metrics": {
+    "score": 85,
+    "narrative_flow": "Strong",
+    "visual_design": "Professional", 
+    "data_credibility": "High"
+  },
+  "sample_feedback": "This is a compelling pitch deck with strong market positioning. The problem is clearly defined with concrete statistics, and the solution addresses the core pain points effectively. Consider adding more specific competitive differentiation and customer testimonials to strengthen credibility further."
+} 

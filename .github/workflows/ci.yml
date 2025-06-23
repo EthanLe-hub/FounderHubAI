@@ -1,0 +1,153 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-backend:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install dependencies
+      run: |
+        cd apps/backend
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pytest pytest-cov
+    
+    - name: Run backend tests
+      run: |
+        cd apps/backend
+        python -m pytest tests/ --cov=. --cov-report=xml
+    
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./apps/backend/coverage.xml
+        flags: backend
+        name: backend-coverage
+
+  test-frontend:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        cache-dependency-path: apps/frontend/package-lock.json
+    
+    - name: Install dependencies
+      run: |
+        cd apps/frontend
+        npm ci
+    
+    - name: Run frontend tests
+      run: |
+        cd apps/frontend
+        npm test -- --coverage --watchAll=false
+    
+    - name: Build frontend
+      run: |
+        cd apps/frontend
+        npm run build
+    
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./apps/frontend/coverage/lcov.info
+        flags: frontend
+        name: frontend-coverage
+
+  lint:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        cache-dependency-path: apps/frontend/package-lock.json
+    
+    - name: Install Python dependencies
+      run: |
+        cd apps/backend
+        python -m pip install --upgrade pip
+        pip install flake8 black isort
+    
+    - name: Install Node.js dependencies
+      run: |
+        cd apps/frontend
+        npm ci
+    
+    - name: Lint Python code
+      run: |
+        cd apps/backend
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        black --check .
+        isort --check-only .
+    
+    - name: Lint TypeScript code
+      run: |
+        cd apps/frontend
+        npm run lint
+
+  security:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        cache-dependency-path: apps/frontend/package-lock.json
+    
+    - name: Install Python dependencies
+      run: |
+        cd apps/backend
+        python -m pip install --upgrade pip
+        pip install safety
+    
+    - name: Install Node.js dependencies
+      run: |
+        cd apps/frontend
+        npm ci
+    
+    - name: Check Python security
+      run: |
+        cd apps/backend
+        safety check
+    
+    - name: Check Node.js security
+      run: |
+        cd apps/frontend
+        npm audit --audit-level moderate 

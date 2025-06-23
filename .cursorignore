@@ -1,0 +1,80 @@
+# Cursor IDE Ignore File
+# This file tells Cursor which files and directories to ignore during indexing
+# This improves performance and reduces noise in search results
+
+# Dependencies and build artifacts
+node_modules/
+apps/*/node_modules/
+apps/*/venv/
+apps/*/__pycache__/
+apps/*/.next/
+apps/*/dist/
+apps/*/build/
+apps/*/target/
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Cache and temporary files
+.cache/
+.parcel-cache/
+.npm/
+.eslintcache/
+*.tsbuildinfo
+.next/
+out/
+
+# Logs and debug files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment and secrets
+.env
+.env.local
+.env.*.local
+secrets.json
+api_keys.json
+
+# Large binary files
+*.zip
+*.tar.gz
+*.rar
+*.jar
+*.war
+*.ear
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Backup files
+*.bak
+*.backup
+
+# Package lock files (optional - uncomment if you want to ignore them)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml 
