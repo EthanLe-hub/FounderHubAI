@@ -21,9 +21,9 @@ jobs:
     - name: Install dependencies
       run: |
         cd apps/backend
+        pip cache purge
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
-        pip install pytest pytest-cov
+        pip install --force-reinstall -r requirements.txt
     
     - name: Run backend tests
       run: |
