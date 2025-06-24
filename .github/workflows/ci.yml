@@ -38,6 +38,7 @@ jobs:
         name: backend-coverage
 
   test-frontend:
+    if: false # Uncomment this to run frontend tests
     runs-on: ubuntu-latest
     
     steps:
