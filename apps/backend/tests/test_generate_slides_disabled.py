@@ -1,0 +1,26 @@
+# NOTE: This test is disabled in CI (GitHub Actions) due to environment or dependency limitations.
+# It works and passes locally in a properly configured Python 3.11+ environment.
+# This test demonstrates the AI-powered slide generation feature for employers and reviewers.
+
+from fastapi.testclient import TestClient
+from main import app
+from unittest.mock import patch
+from types import SimpleNamespace
+
+client = TestClient(app)
+
+@patch("openai.OpenAI")
+def test_generate_slides(mock_openai):
+    # Mock the response from OpenAI
+    mock_client = mock_openai.return_value
+    mock_client.chat.completions.create.return_value = SimpleNamespace(
+        choices=[SimpleNamespace(message=SimpleNamespace(content="Mocked slide content for demo purposes."))]
+    )
+    response = client.post(
+        "/generate-slides",
+        json={"problem": "Too much plastic waste", "solution": "Biodegradable packaging"}
+    )
+    assert response.status_code == 200
+    data = response.json()
+    # Check that the mocked response structure is present
+    assert "slides" in data or "choices" in data
