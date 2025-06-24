@@ -21,14 +21,14 @@ jobs:
     - name: Install dependencies
       run: |
         cd apps/backend
-        pip cache purge
         python -m pip install --upgrade pip
-        pip install --force-reinstall -r requirements.txt
+        pip install -r requirements.txt
+        pip install pytest pytest-cov
     
     - name: Run backend tests
       run: |
         cd apps/backend
-        python -m pytest -k test_dummy tests/ --cov=. --cov-report=xml
+        python -m pytest tests/ --cov=. --cov-report=xml
     
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v3
