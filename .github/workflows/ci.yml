@@ -22,9 +22,16 @@ jobs:
       run: |
         cd apps/backend
         pip cache purge
-        pip install --force-reinstall fastapi==0.104.1 starlette==0.27.0
         python -m pip install --upgrade pip
         pip install --force-reinstall -r requirements.txt
+
+    - name: Force install FastAPI and Starlette
+      run: |
+        pip install --force-reinstall fastapi==0.104.1 starlette==0.27.0
+
+    - name: Show FastAPI and Starlette versions
+      run: |
+        pip show fastapi starlette
     
     - name: Run backend tests
       run: |
