@@ -8,7 +8,6 @@ on:
 
 jobs:
   test-backend:
-    if: false # Uncomment this to run backend tests
     runs-on: ubuntu-latest
     
     steps:
